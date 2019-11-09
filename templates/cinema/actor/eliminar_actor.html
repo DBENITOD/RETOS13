@@ -1,14 +1,14 @@
 {% extends 'layouts/base.html' %}
 
 {% block title %}
-    Editar Autor
+    Editar Actor
 {% endblock %}
 
 {% block content %}
     <form method="POST">
         {% csrf_token %}
-        <h2>¿Deseas eliminar el autor {{ autor.nombre }}?</h2>
+        <h2>¿Deseas eliminar el actor {{ actor.nombres }}?</h2>
         <button class="btn btn-primary" type="submit">Eliminar</button>
-        <a class="btn btn-danger" href="{% url 'libro:listar_autores' %}">Cancelar</a>
+        <a class="btn btn-danger" href="{% url 'cinema:listar_actores' %}">Cancelar</a>
     </form>
 {% endblock %}
