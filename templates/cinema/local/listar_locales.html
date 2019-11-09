@@ -35,8 +35,11 @@
                 <td>{{ local.Direccion }}</td>
                 <td>{{ local.TipoServicio }}</td>
                 <td>{{ local.PrecioBoleto }}</td>
-                <td>{{ local.Distrito }}</td>
-                <td><a href="{{ local.ImagenL.url }}" target="_blank">Imagen</a></td>
+                <td>{{ local.Distrito }}</td>                
+                <td>
+                    <a href="{{ local.ImagenL.url }}" target="_blank">Imagen</a>
+                    <img src="{{ local.ImagenL.url }}" href="{{ local.ImagenL.url }}" class="card-img-top mt-2" alt="">
+                </td>
                 <td>
                     <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
                         <a href="{% url 'cinema:editar_local' local.id %}" class="btn btn-warning">

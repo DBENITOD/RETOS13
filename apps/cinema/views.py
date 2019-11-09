@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.views.decorators.http import require_http_methods
-from .forms import ActorForm, LocalForm
+from .forms import ActorForm, LocalForm, PeliculaForm
 from .models import Actor, Pelicula, Funcion, Reserva, Local
 from django.views.generic import TemplateView, ListView, CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
@@ -8,12 +8,12 @@ from django.urls import reverse_lazy
 # Create your views here.
 
 class Home(TemplateView):
-    template_name = 'cinema/actor/index.html'
+    template_name = 'cinema/local/index.html'
 
     def get_context_data(self, *args, **kwargs):
-        actor = Actor.objects.all()
+        local = Local.objects.all()
         context = super(Home, self).get_context_data(*args, **kwargs)
-        context['actores'] = actor
+        context['locales'] = local
         return context
 
 #ACTORES
@@ -77,3 +77,39 @@ class EliminarLocal(DeleteView):
         context = super(EliminarLocal, self).get_context_data(*args, **kwargs)
         context['local'] = local
         return context        
+
+#PELICULAS
+
+class ListarPeliculas(ListView):
+    model = Pelicula
+    template_name = 'cinema/pelicula/listar_peliculas.html'
+    queryset = Pelicula.objects.all()
+    context_object_name = 'peliculas'
+
+class CrearPelicula(CreateView):
+    model = Pelicula
+    form_class = PeliculaForm
+    template_name = 'cinema/pelicula/crear_pelicula.html'
+    success_url = reverse_lazy('cinema:listar_peliculas')
+
+
+class EditarPelicula(UpdateView):
+    model = Pelicula
+    form_class = PeliculaForm
+    template_name = 'cinema/pelicula/editar_pelicula.html'
+    success_url = reverse_lazy('cinema:listar_peliculas')
+
+
+class EliminarPelicula(DeleteView):
+    model = Pelicula
+    form_class = PeliculaForm
+    template_name = 'cinema/pelicula/eliminar_pelicula.html'
+    success_url = reverse_lazy('cinema:listar_peliculas')
+
+    def get_context_data(self, *args, **kwargs):
+        pelicula = Pelicula.objects.get(id=self.kwargs.get('pk'))
+        context = super(EliminarPelicula, self).get_context_data(*args, **kwargs)
+        context['pelicula'] = pelicula
+        return context
+
+        

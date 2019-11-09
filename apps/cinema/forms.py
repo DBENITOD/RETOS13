@@ -81,3 +81,75 @@ class LocalForm(forms.ModelForm):
                 }
             )
         }
+
+class PeliculaForm(forms.ModelForm):
+    class Meta:
+        model = Pelicula 
+        fields = ['titulo','trailer','categoria','genero','imagenP','sinopsis','director','idioma']
+        labels = {
+            'titulo': 'Titulo de la Pelicula',
+            'trailer': 'Trailer de la Pelicula',
+            'categoria': 'Categoria de la Pelicula',
+            'genero': 'Genero de la Pelicula',
+            'imagenP': 'Avatar de la Pelicula',
+            'sinopsis': 'Sinopsis de la Pelicula',
+            'director': 'Director de la Pelicula',
+            'idioma': 'Idioma de la Pelcula'
+        }
+        widgets = {
+            'titulo': forms.TextInput(
+                attrs={
+                    'class': 'form-control',
+                    'placeholder': 'Ingresa el Titulo de la Pelicula ',
+                    'id': 'titulo'
+                }
+            ),
+             'trailer': forms.TextInput(
+                attrs={
+                    'class': 'form-control',
+                    'placeholder': 'Ingresa el Trailer de la Pelicula ',
+                    'id': 'trailer'
+                }
+            ),
+             'categoria': forms.TextInput(
+                attrs={
+                    'class': 'form-control',
+                    'placeholder': 'Ingresa la Categoria de la Pelicula ',
+                    'id': 'categoria'
+                }
+            ),
+             'genero': forms.TextInput(
+                attrs={
+                    'class': 'form-control',
+                    'placeholder': 'Ingresa el Genero de la Pelicula ',
+                    'id': 'genero'
+                }
+            ),
+            'imagenP': forms.FileInput(
+                attrs={
+                    'class': 'form-control',
+                    'id': 'imagenP'
+                }
+            ),
+             'sinopsis': forms.TextInput(
+                attrs={
+                    'class': 'form-control',
+                    'placeholder': 'Ingresa la Sinopsis de la Pelicula ',
+                    'id': 'sinopsis'
+                }
+            ),
+             'director': forms.TextInput(
+                attrs={
+                    'class': 'form-control',
+                    'placeholder': 'Ingresa el Director de la Pelicula ',
+                    'id': 'director'
+                }
+            ),
+             'idioma': forms.TextInput(
+                attrs={
+                    'class': 'form-control',
+                    'placeholder': 'Ingresa el Idioma de la Pelicula ',
+                    'id': 'idioma'
+                }
+            )
+        }

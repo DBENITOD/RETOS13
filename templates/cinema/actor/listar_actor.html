@@ -28,7 +28,9 @@
             <tr>
                 <td>{{ forloop.counter }}</td>
                 <td>{{ actor.nombres }}</td>
-                <td><a href="{{ actor.imagenA.url }}" target="_blank">Imagen</a></td>
+                <td><a href="{{ actor.imagenA.url }}" target="_blank">Imagen</a>
+                <img src="{{ actor.imagenA.url }}" href="{{ actor.imagenA.url }}" width="50px" height="300px" class="card-img-top mt-2" alt="">
+                </td>
                 <td>
                     <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
                         <a href="{% url 'cinema:editar_actor' actor.id %}" class="btn btn-warning">
