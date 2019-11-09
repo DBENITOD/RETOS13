@@ -1,0 +1,55 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %}
+    Listar Libros
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col">
+            <h3 class="one">&nbsp;</h3>
+        </div>
+        <div class="col-autor">
+            <a class="btn btn-primary pull-right" href="{% url 'libro:crear_autor' %}">
+                <i class="fa fa-add"></i>Crear Libro
+            </a>
+        </div>
+    </div>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Titulo</th>
+            <th>Fecha Publicación</th>
+            <th>Imagen</th>
+            <th>Autores</th>
+            <th>Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for libro in libros %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ libro.titulo }}</td>
+                <td>{{ libro.fecha_publicacion }}</td>
+                <td><a href="{{ libro.imagen.url }}" target="_blank">Imagen</a></td>
+                <td>
+                    {% for autor in libro.autor.all %}
+                        {{ autor.nombre }}
+                    {% endfor %}
+                </td>
+                <td>
+                    <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+                        <a href="{% url 'libro:editar_autor' libro.id %}" class="btn btn-warning">
+                            <i class="fa fa-edit"></i>
+                        </a>
+                        <a href="{% url 'libro:eliminar_autor' libro.id %}" class="btn btn-danger">
+                            <i class="fa fa-trash"></i>
+                        </a>
+                    </div>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

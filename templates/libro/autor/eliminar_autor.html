@@ -1,0 +1,14 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %}
+    Editar Autor
+{% endblock %}
+
+{% block content %}
+    <form method="POST">
+        {% csrf_token %}
+        <h2>¿Deseas eliminar el autor {{ autor.nombre }}?</h2>
+        <button class="btn btn-primary" type="submit">Eliminar</button>
+        <a class="btn btn-danger" href="{% url 'libro:listar_autores' %}">Cancelar</a>
+    </form>
+{% endblock %}
