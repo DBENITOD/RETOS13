@@ -74,6 +74,6 @@ class EliminarLocal(DeleteView):
 
     def get_context_data(self, *args, **kwargs):
         local = Local.objects.get(id=self.kwargs.get('pk'))
-        context = super(EliminarActor, self).get_context_data(*args, **kwargs)
+        context = super(EliminarLocal, self).get_context_data(*args, **kwargs)
         context['local'] = local
         return context        

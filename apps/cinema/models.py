@@ -78,6 +78,14 @@ class Funcion(models.Model):
 
 class Reserva(models.Model):
     id = models.AutoField(primary_key=True)
-    funcion = models.ForeignKey('cinema.Local', on_delete=models.CASCADE)
+    funcion = models.ForeignKey('cinema.funcion', on_delete=models.CASCADE)
     cantidad = models.TextField(max_length=50, blank=False, null=False)
     total = models.TextField(max_length=50, blank=False, null=False)
+
+    class Meta:
+        verbose_name= 'Reserva'
+        verbose_name_plural= 'Reservas'
+        ordering = ['funcion']
+
+    def __str__(self):
+        return self.funcion

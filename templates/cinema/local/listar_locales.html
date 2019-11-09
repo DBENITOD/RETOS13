@@ -28,7 +28,7 @@
         </tr>
         </thead>
         <tbody>
-        {% for local in Locales %}
+        {% for local in locales %}
             <tr>
                 <td>{{ forloop.counter }}</td>
                 <td>{{ local.nombre }}</td>
@@ -39,10 +39,10 @@
                 <td><a href="{{ local.ImagenL.url }}" target="_blank">Imagen</a></td>
                 <td>
                     <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
-                        <a href="{% url 'local:editar_local' local.id %}" class="btn btn-warning">
+                        <a href="{% url 'cinema:editar_local' local.id %}" class="btn btn-warning">
                             <i class="fa fa-edit"></i>
                         </a>
-                        <a href="{% url 'local:eliminar_local' local.id %}" class="btn btn-danger">
+                        <a href="{% url 'cinema:eliminar_local' local.id %}" class="btn btn-danger">
                             <i class="fa fa-trash"></i>
                         </a>
                     </div>
